@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Weather Data Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #1e5799, #207cca);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .chart-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .chart-card h2 {
+            color: #1e5799;
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 0.5rem;
+        }
+        .insights {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .insight-item {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table th, table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        table th {
+            background-color: #e3f2fd;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ 2025 Weather Data Analysis</h1>
+            <p>Comprehensive Temperature Trends and Weather Patterns</p>
+        </header>
+        
+        <div class="insights">
+            <h2>📊 Key Insights</h2>
+            <div class="insight-item">
+                <strong>Temperature Trend:</strong> Average temperature shows a gradual increase from January to March, indicating seasonal warming.
+            </div>
+            <div class="insight-item">
+                <strong>Seasonal Pattern:</strong> March records the highest average temperatures (+4.4°C compared to January), demonstrating clear spring progression.
+            </div>
+            <div class="insight-item">
+                <strong>Extreme Variation:</strong> Maximum daily temperature variation reaches 12.8°C in January, indicating significant weather fluctuations.
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>🌡️ Monthly Average Temperature Trends</h2>
+                <canvas id="tempTrendChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h2>❄️ Monthly Min/Max Temperature Range</h2>
+                <canvas id="tempRangeChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h2>💧 Humidity Levels Throughout 2025</h2>
+                <canvas id="humidityChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h2>💨 Wind Speed Patterns</h2>
+                <canvas id="windChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="chart-card">
+            <h2>📅 Detailed Weather Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Min Temp (°C)</th>
+                        <th>Max Temp (°C)</th>
+                        <th>Avg Temp (°C)</th>
+                        <th>Humidity (%)</th>
+                        <th>Wind Speed (km/h)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-01-01</td>
+                        <td>2.5</td>
+                        <td>10.5</td>
+                        <td>6.5</td>
+                        <td>75.2</td>
+                        <td>12.3</td>
+                    </tr>
+                    <tr>
+                        <td>2025-01-02</td>
+                        <td>1.0</td>
+                        <td>12.0</td>
+                        <td>6.5</td>
+                        <td>68.7</td>
+                        <td>15.2</td>
+                    </tr>
+                    <tr>
+                        <td>2025-01-03</td>
+                        <td>3.0</td>
+                        <td>11.0</td>
+                        <td>7.0</td>
+                        <td>71.3</td>
+                        <td>10.8</td>
+                    </tr>
+                    <tr>
+                        <td>2025-01-04</td>
+                        <td>0.5</td>
+                        <td>9.5</td>
+                        <td>5.0</td>
+                        <td>82.1</td>
+                        <td>18.7</td>
+                    </tr>
+                    <tr>
+                        <td>2025-01-05</td>
+                        <td>-1.0</td>
+                        <td>8.0</td>
+                        <td>3.5</td>
+                        <td>88.5</td>
+                        <td>22.1</td>
+                    </tr>
+                    <tr>
+                        <td>2025-02-01</td>
+                        <td>3.2</td>
+                        <td>11.5</td>
+                        <td>7.4</td>
+                        <td>72.8</td>
+                        <td>11.9</td>
+                    </tr>
+                    <tr>
+                        <td>2025-02-02</td>
+                        <td>2.7</td>
+                        <td>12.8</td>
+                        <td>7.8</td>
+                        <td>69.4</td>
+                        <td>13.2</td>
+                    </tr>
+                    <tr>
+                        <td>2025-02-03</td>
+                        <td>4.5</td>
+                        <td>14.2</td>
+                        <td>9.4</td>
+                        <td>63.7</td>
+                        <td>8.9</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-01</td>
+                        <td>5.2</td>
+                        <td>15.8</td>
+                        <td>10.5</td>
+                        <td>58.3</td>
+                        <td>7.4</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-02</td>
+                        <td>6.1</td>
+                        <td>16.9</td>
+                        <td>11.5</td>
+                        <td>55.7</td>
+                        <td>6.8</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-03</td>
+                        <td>4.8</td>
+                        <td>14.7</td>
+                        <td>9.8</td>
+                        <td>62.4</td>
+                        <td>9.3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <footer>
+        <p>2025 Weather Data Analysis | Generated using Apache Spark</p>
+    </footer>
+
+    <script>
+        // Temperature Trend Chart
+        const tempTrendCtx = document.getElementById('tempTrendChart').getContext('2d');
+        const tempTrendChart = new Chart(tempTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [
+                    {
+                        label: 'Average Temperature',
+                        data: [5.7, 7.4, 10.6],
+                        borderColor: '#ff6384',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Min Temperature',
+                        data: [1.1, 2.3, 5.4],
+                        borderColor: '#36a2eb',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Max Temperature',
+                        data: [9.9, 12.5, 15.8],
+                        borderColor: '#ff9f40',
+                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Temperature (°C)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Temperature Range Chart
+        const tempRangeCtx = document.getElementById('tempRangeChart').getContext('2d');
+        const tempRangeChart = new Chart(tempRangeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [
+                    {
+                        label: 'Min Temperature',
+                        data: [1.1, 2.3, 5.4],
+                        backgroundColor: '#36a2eb',
+                    },
+                    {
+                        label: 'Max Temperature',
+                        data: [9.9, 12.5, 15.8],
+                        backgroundColor: '#ff6384',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Temperature (°C)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Humidity Chart
+        const humidityCtx = document.getElementById('humidityChart').getContext('2d');
+        const humidityChart = new Chart(humidityCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [
+                    {
+                        label: 'Average Humidity',
+                        data: [78.1, 72.5, 58.8],
+                        borderColor: '#4bc0c0',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Humidity (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Wind Speed Chart
+        const windCtx = document.getElementById('windChart').getContext('2d');
+        const windChart = new Chart(windCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [
+                    {
+                        label: 'Average Wind Speed',
+                        data: [15.6, 14.2, 7.8],
+                        backgroundColor: '#9966ff',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Wind Speed (km/h)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

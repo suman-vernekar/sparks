@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toronto 2025 Weather Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            margin: 10px;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .step-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+        
+        .visualization {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .insight-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+            margin-top: 2rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📊 Toronto 2025 Weather Analysis</h1>
+        <p>Using weather_data.csv for Real Weather Insights</p>
+    </header>
+    
+    <div class="process-flow">
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>Data Loading</h3>
+            <p>Read weather_data.csv with Pandas</p>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>Data Processing</h3>
+            <p>Clean and transform weather data</p>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>Analysis</h3>
+            <p>Calculate monthly averages</p>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3>Visualization</h3>
+            <p>Create interactive charts</p>
+        </div>
+    </div>
+    
+    <div class="visualization">
+        <h2>📈 Temperature Trends from weather_data.csv</h2>
+        
+        <div class="code-block">
+# Load and process weather data
+import pandas as pd
+df = pd.read_csv('weather_data.csv')
+df['Date/Time'] = pd.to_datetime(df['Date/Time'])
+monthly_avg = df.groupby(df['Date/Time'].dt.month).agg({
+    'Max Temp (°C)': 'mean',
+    'Min Temp (°C)': 'mean',
+    'Mean Temp (°C)': 'mean'
+})
+        </div>
+        
+        <h3>Monthly Temperature Trends</h3>
+        <div class="chart-container">
+            <div class="loading" id="tempTrendLoading">Loading chart...</div>
+            <canvas id="tempTrendChart" style="display:none;"></canvas>
+        </div>
+        
+        <h3>Temperature Range by Month</h3>
+        <div class="chart-container">
+            <div class="loading" id="tempRangeLoading">Loading chart...</div>
+            <canvas id="tempRangeChart" style="display:none;"></canvas>
+        </div>
+    </div>
+    
+    <div class="visualization">
+        <h2>💡 Key Insights from weather_data.csv</h2>
+        
+        <div class="insight-box">
+            <strong>Overall Average Temperature:</strong> 
+            <span id="avg-temp">-2.5°C</span> across the analyzed period
+        </div>
+        
+        <div class="insight-box">
+            <strong>Hottest Month:</strong> 
+            <span id="hottest-month">March</span> with average temperatures rising to <span id="max-temp">15.9°C</span>
+        </div>
+        
+        <div class="insight-box">
+            <strong>Coldest Month:</strong> 
+            <span id="coldest-month">January</span> with average temperatures dropping to <span id="min-temp">-16.1°C</span>
+        </div>
+        
+        <div class="insight-box">
+            <strong>Data Source:</strong> 
+            Analysis based on actual Toronto weather data from weather_data.csv file
+        </div>
+    </div>
+    
+    <div class="code-block">
+# Run the analysis
+python process_weather_for_html.py
+> Processing weather data for HTML visualization...
+> Loaded 91 records
+> Data processed and saved to weather_data.json
+> Ready for HTML visualization
+    </div>
+    
+    <footer>
+        <p>Toronto 2025 Weather Analysis | Powered by Python, Pandas & Chart.js</p>
+    </footer>
+
+    <script>
+        // Load the weather data
+        fetch('weather_data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hide loading indicators and show charts
+                document.getElementById('tempTrendLoading').style.display = 'none';
+                document.getElementById('tempRangeLoading').style.display = 'none';
+                document.getElementById('tempTrendChart').style.display = 'block';
+                document.getElementById('tempRangeChart').style.display = 'block';
+                
+                // Update insights
+                document.getElementById('avg-temp').textContent = data.insights.avg_temp + '°C';
+                document.getElementById('max-temp').textContent = data.insights.max_temp + '°C';
+                document.getElementById('min-temp').textContent = data.insights.min_temp + '°C';
+                document.getElementById('hottest-month').textContent = data.insights.hottest_month;
+                document.getElementById('coldest-month').textContent = data.insights.coldest_month;
+                
+                // Create temperature trend chart
+                const tempTrendCtx = document.getElementById('tempTrendChart').getContext('2d');
+                new Chart(tempTrendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: data.chart_data.labels,
+                        datasets: [
+                            {
+                                label: 'Average Minimum Temperature',
+                                data: data.chart_data.min_temp,
+                                borderColor: '#36a2eb',
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Average Maximum Temperature',
+                                data: data.chart_data.max_temp,
+                                borderColor: '#ff6384',
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Average Mean Temperature',
+                                data: data.chart_data.mean_temp,
+                                borderColor: '#ff9f40',
+                                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                title: {
+                                    display: true,
+                                    text: 'Temperature (°C)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Create temperature range chart
+                const tempRangeCtx = document.getElementById('tempRangeChart').getContext('2d');
+                const rangeData = [];
+                for (let i = 0; i < data.chart_data.max_temp.length; i++) {
+                    rangeData.push(data.chart_data.max_temp[i] - data.chart_data.min_temp[i]);
+                }
+                
+                new Chart(tempRangeCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.chart_data.labels,
+                        datasets: [
+                            {
+                                label: 'Temperature Range (Max - Min)',
+                                data: rangeData,
+                                backgroundColor: '#4bc0c0',
+                                borderColor: '#4bc0c0',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Temperature Range (°C)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading weather data:', error);
+                // Show error message
+                document.getElementById('tempTrendLoading').textContent = 'Error loading chart: ' + error.message;
+                document.getElementById('tempRangeLoading').textContent = 'Error loading chart: ' + error.message;
+            });
+    </script>
+</body>
+</html>

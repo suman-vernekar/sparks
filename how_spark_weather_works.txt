@@ -1,0 +1,40 @@
+SPARK WEATHER ANALYSIS - HOW IT WORKS
+
+1. DATA INPUT
+   - Weather data is loaded from CSV file
+   - Columns: date, min_temp, max_temp, avg_temp, humidity, wind_speed
+
+2. SPARK SESSION INITIALIZATION
+   - Apache Spark framework is started
+   - Distributed computing environment is created
+
+3. DATA TRANSFORMATION
+   - Date strings converted to proper DateType
+   - Null values removed
+   - Duplicates eliminated
+   - Year/month/day extracted from dates
+
+4. BATCH PROCESSING
+   - Overall metrics calculated (min, max, avg temps)
+   - Yearly trends analyzed
+   - Monthly patterns identified
+   - Extreme weather days found
+
+5. RESULTS GENERATION
+   - Tabular output of all metrics
+   - Key insights and trends
+   - Temperature change analysis
+
+TECHNOLOGIES USED
+- Apache Spark for distributed data processing
+- PySpark for Python integration
+- CSV for data storage
+- SQL-like operations for analysis
+
+EXECUTION FLOW
+1. Create Spark session
+2. Load CSV data
+3. Clean and transform data
+4. Perform aggregations
+5. Generate insights
+6. Display results

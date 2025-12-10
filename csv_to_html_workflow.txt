@@ -1,0 +1,40 @@
+CSV TO HTML VISUALIZATION WORKFLOW
+
+┌─────────────────────┐
+│   weather_data.csv  │
+│   (Raw Weather Data)│
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  process_weather_   │
+│  for_html.py        │
+│  (Python Processing)│
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  weather_data.json  │
+│  (Processed Data)   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  how_2025_analysis_ │
+│  works.html         │
+│  (HTML Visualization)│
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   Web Browser       │
+│   (Interactive      │
+│    Charts)          │
+└─────────────────────┘
+
+BENEFITS:
+• Real data visualization
+• Interactive charts
+• Automated processing
+• Easy to update
+• Self-contained system

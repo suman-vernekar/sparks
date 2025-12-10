@@ -1,0 +1,51 @@
+WEATHER DATA ANALYSIS WORKFLOW
+USING weather_data.csv
+
+┌─────────────────────┐
+│   weather_data.csv  │
+│   (Toronto 2025)    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   DATA LOADING      │
+│   pandas.read_csv() │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   DATA CLEANING     │
+│   • Date parsing    │
+│   • NaN removal     │
+│   • Type conversion │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   AGGREGATION       │
+│   • Group by month  │
+│   • Calculate means │
+│   • Find extremes   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   VISUALIZATION     │
+│   • Temp trends     │
+│   • Range charts    │
+│   • Insights gen    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   OUTPUT RESULTS    │
+│   • PNG charts      │
+│   • Console stats   │
+│   • Data insights   │
+└─────────────────────┘
+
+BENEFITS:
+• Comprehensive 2025 data
+• Multiple weather metrics
+• Ready for analysis
+• Visual output ready

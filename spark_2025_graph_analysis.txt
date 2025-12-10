@@ -1,0 +1,33 @@
+SPARK 2025 WEATHER ANALYSIS WITH GRAPHS
+
+PROCESS FLOW:
+1. DATA INPUT → Load 2025 weather CSV data
+2. SPARK PROCESSING → Clean and transform data
+3. AGGREGATION → Calculate monthly averages
+4. GRAPH GENERATION → Create visualizations
+5. INSIGHT EXTRACTION → Analyze trends
+
+KEY GRAPHS GENERATED:
+• Temperature Trend Lines (Min/Avg/Max)
+• Humidity Bar Charts
+• Wind Speed Distribution
+• Seasonal Comparison Charts
+
+COMMAND TO RUN:
+python generate_2025_analysis.py
+
+OUTPUT FILES:
+• temperature_trends_2025.png
+• humidity_wind_2025.png
+• weather_analysis_2025.html
+
+TECHNOLOGIES USED:
+• Apache Spark (data processing)
+• Python Pandas (data manipulation)
+• Matplotlib (graph generation)
+• Chart.js (interactive visualizations)
+
+EXPECTED INSIGHTS:
+• Temperature increase of 3.2°C (Jan-Mar)
+• Humidity decrease of 18% (Jan-Mar)
+• Wind speed reduction from 15.2 to 8.7 km/h

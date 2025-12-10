@@ -1,0 +1,44 @@
+SPARK 2025 WEATHER ANALYSIS WORKFLOW
+
+┌─────────────────────┐
+│   2025 WEATHER      │
+│   DATA (CSV)        │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   APACHE SPARK      │
+│   DATA PROCESSING   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   PYSPARK           │
+│   TRANSFORMATIONS   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   AGGREGATIONS      │
+│   & CALCULATIONS    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   GRAPH GENERATION  │
+│   (Matplotlib/JS)   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   VISUAL OUTPUT     │
+│   • Trend Lines     │
+│   • Bar Charts      │
+│   • Interactive UI  │
+└─────────────────────┘
+
+BENEFITS:
+• Distributed processing
+• Scalable analysis
+• Rich visualizations
+• Actionable insights

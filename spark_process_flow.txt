@@ -1,0 +1,41 @@
+SPARK WEATHER ANALYSIS PROCESS FLOW
+
+┌─────────────────────┐
+│   WEATHER DATA      │  (CSV file with date, temp, humidity, wind)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   SPARK SESSION     │  (Initialize distributed computing)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   DATA CLEANING     │  (Remove nulls, duplicates)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  TRANSFORMATION     │  (Convert dates, extract year/month)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   AGGREGATIONS      │  (Min, Max, Avg calculations)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   METRICS ANALYSIS  │  (Trend identification)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   RESULTS OUTPUT    │  (Tabular data + insights)
+└─────────────────────┘
+
+KEY OPERATIONS:
+• GroupBy year/month for temporal analysis
+• Window functions for trend detection
+• Statistical aggregations (min, max, avg)
+• Sorting for extreme value identification

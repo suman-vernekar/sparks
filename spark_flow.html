@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark Weather Analysis Flow</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .node {
+            width: 200px;
+            height: 60px;
+            background: #007bff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .arrow {
+            font-size: 24px;
+            color: #007bff;
+            margin: 5px 0;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .explanation {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spark Weather Analysis Pipeline</h1>
+        
+        <div class="flowchart">
+            <div class="node">1. Data Input (CSV)</div>
+            <div class="arrow">↓</div>
+            <div class="node">2. Spark Session</div>
+            <div class="arrow">↓</div>
+            <div class="node">3. Data Transformation</div>
+            <div class="arrow">↓</div>
+            <div class="node">4. Aggregations</div>
+            <div class="arrow">↓</div>
+            <div class="node">5. Results Output</div>
+        </div>
+        
+        <div class="explanation">
+            <h2>How It Works:</h2>
+            <p><strong>1. Data Input:</strong> Weather data is loaded from a CSV file containing date, temperature, humidity, and wind speed.</p>
+            <p><strong>2. Spark Session:</strong> Apache Spark distributed computing framework is initialized.</p>
+            <p><strong>3. Data Transformation:</strong> Data is cleaned, date fields are parsed, and new columns are derived.</p>
+            <p><strong>4. Aggregations:</strong> Min, max, and average temperatures are calculated across different time periods.</p>
+            <p><strong>5. Results Output:</strong> Analysis results are displayed in tabular format with key insights.</p>
+        </div>
+        
+        <div class="code-block">
+# Sample PySpark Code Structure
+spark = SparkSession.builder.appName("WeatherAnalysis").getOrCreate()
+
+# Load data
+df = spark.read.csv("weather_data.csv", header=True, inferSchema=True)
+
+# Transform data
+df_cleaned = df.withColumn("date", to_date(col("date")))
+df_with_year = df_cleaned.withColumn("year", year(col("date")))
+
+# Aggregate data
+yearly_avg = df_with_year.groupBy("year").avg("avg_temp")
+
+# Show results
+yearly_avg.show()
+        </div>
+    </div>
+</body>
+</html>

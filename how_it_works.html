@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Spark Weather Analysis Works</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+        .step h3 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+        }
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .flowchart {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .flowchart div {
+            display: inline-block;
+            width: 120px;
+            height: 60px;
+            line-height: 60px;
+            background: #007bff;
+            color: white;
+            margin: 0 10px;
+            border-radius: 4px;
+            vertical-align: top;
+        }
+        .arrow {
+            display: inline-block;
+            width: 30px;
+            height: 60px;
+            line-height: 60px;
+            color: #007bff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How Spark Weather Analysis Works</h1>
+        
+        <div class="flowchart">
+            <div>Data Input</div>
+            <div class="arrow">→</div>
+            <div>Spark Processing</div>
+            <div class="arrow">→</div>
+            <div>Results Output</div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 1: Data Loading</h3>
+            <p>The process begins by loading weather data from a CSV file using PySpark:</p>
+            <div class="code">
+# Read weather data from CSV
+df = spark.read.csv("weather_data.csv", header=True, schema=schema)
+            </div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 2: Data Transformation</h3>
+            <p>Data is cleaned and transformed for analysis:</p>
+            <div class="code">
+# Convert date strings to DateType
+df_cleaned = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
+
+# Extract date components
+df_transformed = df_cleaned.withColumn("year", year(col("date")))
+            </div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 3: Aggregation & Analysis</h3>
+            <p>Various aggregations are computed to extract insights:</p>
+            <div class="code">
+# Compute yearly metrics
+yearly_metrics = df.groupBy("year").agg(
+    min("min_temp").alias("min_temp"),
+    max("max_temp").alias("max_temp"),
+    avg("avg_temp").alias("avg_temp")
+)
+
+# Find extreme weather days
+hottest_days = df.orderBy(col("max_temp").desc()).limit(5)
+            </div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 4: Results Generation</h3>
+            <p>Finally, results are formatted and displayed:</p>
+            <div class="code">
+# Show results
+yearly_metrics.show()
+hottest_days.show()
+
+# Generate insights
+print(f"Temperature trend: {temp_change:.2f}°C change")
+            </div>
+        </div>
+    </div>
+</body>
+</html>

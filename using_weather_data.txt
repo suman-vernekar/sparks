@@ -1,0 +1,46 @@
+USING weather_data.csv FOR WEATHER ANALYSIS
+
+FILE INFORMATION:
+• Name: weather_data.csv
+• Location: Current directory
+• Size: 367 rows
+• Content: Toronto weather data for 2025
+
+DATA STRUCTURE:
+Columns include:
+• Longitude (x) and Latitude (y)
+• Station Name and Climate ID
+• Date/Time (YYYY-MM-DD)
+• Year, Month, Day
+• Max Temp (°C), Min Temp (°C), Mean Temp (°C)
+• Heat Deg Days, Cool Deg Days
+• Total Rain, Total Snow, Total Precip
+• Snow on Grnd, Wind Data
+
+HOW TO ANALYZE:
+1. LOAD DATA:
+   import pandas as pd
+   df = pd.read_csv('weather_data.csv')
+
+2. CLEAN DATA:
+   df['Date/Time'] = pd.to_datetime(df['Date/Time'])
+   df = df.dropna(subset=['Max Temp (°C)', 'Min Temp (°C)', 'Mean Temp (°C)'])
+
+3. ANALYZE:
+   - Monthly averages
+   - Temperature trends
+   - Precipitation patterns
+   - Extreme weather events
+
+4. VISUALIZE:
+   - Temperature line charts
+   - Precipitation bar charts
+   - Seasonal comparison graphs
+
+SCRIPT TO RUN:
+python analyze_weather_data.py
+
+OUTPUT:
+• toronto_temperature_trends_2025.png
+• toronto_temperature_ranges_2025.png
+• Console insights and statistics

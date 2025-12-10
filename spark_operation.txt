@@ -1,0 +1,25 @@
+SPARK WEATHER ANALYSIS OPERATION
+
+INPUT: weather_data.csv
+PROCESS: 
+1. Load CSV → Spark DataFrame
+2. Clean data → Remove nulls/duplicates
+3. Transform → Extract date components
+4. Analyze → Calculate metrics
+5. Output → Display results
+
+COMMAND TO RUN:
+python simple_weather_analysis.py
+
+RESULT STRUCTURE:
+- Overall metrics table
+- Yearly trends table
+- Monthly patterns table
+- Extreme days table
+- Key insights list
+
+TECHNOLOGIES:
+- Apache Spark (distributed processing)
+- PySpark (Python API)
+- SQL operations (groupby, agg, window)
+- DataFrames (structured data)

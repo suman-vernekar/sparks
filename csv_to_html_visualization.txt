@@ -1,0 +1,33 @@
+WEATHER DATA CSV TO HTML VISUALIZATION
+
+PROCESS FLOW:
+1. DATA SOURCE → weather_data.csv (Toronto 2025 weather data)
+2. PYTHON PROCESSING → process_weather_for_html.py
+3. DATA CONVERSION → weather_data.json
+4. HTML RENDERING → how_2025_analysis_works.html
+5. CHART DISPLAY → Interactive JavaScript charts
+
+FILES INVOLVED:
+• weather_data.csv → Raw weather data
+• process_weather_for_html.py → Data processing script
+• weather_data.json → Processed data for visualization
+• how_2025_analysis_works.html → Visualization page
+
+VISUALIZATIONS CREATED:
+• Temperature Trend Lines (Min/Mean/Max)
+• Monthly Temperature Ranges
+• Key Weather Insights
+
+COMMAND TO PROCESS DATA:
+python process_weather_for_html.py
+
+OUTPUT FROM PROCESSING:
+• JSON data file with chart-ready information
+• Updated HTML page with interactive charts
+• Real insights from actual weather data
+
+TECHNOLOGIES USED:
+• Python Pandas (data processing)
+• JSON (data exchange)
+• Chart.js (interactive visualizations)
+• HTML/CSS (presentation)
