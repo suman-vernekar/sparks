@@ -138,10 +138,3 @@ val forecast = WeatherForecastProcessor
 3. Make your changes
 4. Submit a pull request
 
-## License
-
-[Specify your license here]
-
-## Contact
-
-[Your contact information]
