@@ -2,7 +2,7 @@ WEATHER DATA CSV TO HTML VISUALIZATION
 
 PROCESS FLOW:
 1. DATA SOURCE → weather_data.csv (Toronto 2025 weather data)
-2. PYTHON PROCESSING → process_weather_for_html.py
+2. PYTHON PROCESSING → process_weather_for_html.
 3. DATA CONVERSION → weather_data.json
 4. HTML RENDERING → how_2025_analysis_works.html
 5. CHART DISPLAY → Interactive JavaScript charts
